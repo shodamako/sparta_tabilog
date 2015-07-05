@@ -15,5 +15,22 @@
   <%= @destination.access %>
 </p>
 
-<%= link_to 'Edit', edit_destination_path(@destination) %> |
-<%= link_to 'Back', destinations_path %>
+<%= link_to '編集', edit_destination_path(@destination) %> |
+    <%= link_to '戻る', destinations_path %> |
+    <%= link_to 'レビューを書く', new_destination_review_path(@destination) %> |
+
+    <hr>
+
+    <h2>レビュー一覧</h2>
+    <% @destination.reviews.each do |review| %>
+      <p>
+        <%= review.body %> <br>
+        by <%= review.user.email %>
+      </p>
+    <% end %>
+    <hr>
+    <h2>レビューを残したユーザー一覧</h2>
+
+    <% @destination.users.each do |user| %>
+      <p><%= user.email %></p>
+    <% end %>

@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(
       destination_id: params[:destination_id],
-      user_id: vurrent_user.id,
+      user_id: current_user.id,
       point: review_params["point"],
       body: review_params["body"]
       )

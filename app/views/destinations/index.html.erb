@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Destinations</h1>
+<h1>朝活にオススメの場所</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Access</th>
+      <th>場所名</th>
+      <th>住所</th>
+      <th>最寄駅</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +18,7 @@
         <td><%= destination.name %></td>
         <td><%= destination.address %></td>
         <td><%= destination.access %></td>
-        <td><%= link_to 'Show', destination %></td>
-        <td><%= link_to 'Edit', edit_destination_path(destination) %></td>
-        <td><%= link_to 'Destroy', destination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', destination %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Destination', new_destination_path %>
+<%= link_to '場所の新規登録', new_destination_path %>
