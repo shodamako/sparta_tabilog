@@ -29,6 +29,16 @@
 
     <hr>
 
+    <p>
+      <strong>Image:</strong>
+      <% if @destination.image? %>
+        <div class="thumbnail">
+          <%= image_tag @destination.image.url %>
+        </div>
+      <% end %>
+    </p>
+
+
     <h2>レビュー一覧</h2>
     <% @destination.reviews.each do |review| %>
       <p>
