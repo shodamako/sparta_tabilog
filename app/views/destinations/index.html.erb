@@ -18,7 +18,7 @@
         <td><%= destination.name %></td>
         <td><%= destination.address %></td>
         <td><%= destination.access %></td>
-        <td><%= link_to '詳細', destination %></td>
+        <td><%= link_to '詳細', destination, class:"btn btn-default btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to '場所の新規登録', new_destination_path %>
+<%= link_to '場所の新規登録', new_destination_path, class:"btn btn-default btn-sm" %>

@@ -10,6 +10,12 @@ class DestinationsController < ApplicationController
   # GET /destinations/1
   # GET /destinations/1.json
   def show
+    @destination = Destination.find(params[:id])
+    if @destination.reviews.count > 0
+      @points = @destination.reviews.average(:point)
+    else
+      @points = 0
+    end
   end
 
   # GET /destinations/new

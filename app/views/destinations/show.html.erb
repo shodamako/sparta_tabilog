@@ -1,23 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @destination.name %>
-</p>
+    <strong>
+      <h1 class="bg-warning" style=color:#e03256;>
+        <%= @destination.name %>
+      </h1>
+    </strong>
 
-<p>
-  <strong>Address:</strong>
-  <%= @destination.address %>
-</p>
-
-<p>
-  <strong>Access:</strong>
-  <%= @destination.access %>
-</p>
+        <% if @points == 0 %>
+        <h4>まだレビューがありません</h4>
+      <% elsif @points <= 1 %>
+        <h4><%= @points %>　<img src="/image/star_ll10.gif"></h4>
+      <% elsif @points <= 2 %>
+        <h4><%= @points %>　<img src="/image/star_ll20.gif"></h4>
+      <% elsif @points <= 3 %>
+        <h4><%= @points %>　<img src="/image/star_ll30.gif"></h4>
+      <% elsif @points <= 4 %>
+        <h4><%= @points %>　<img src="/image/star_ll40.gif"></h4>
+      <% else %>
+        <h4><%= @points %>　<img src="/image/star_ll50.gif"></h4>
+      <% end %>
 
 <%= link_to '編集', edit_destination_path(@destination) %> |
     <%= link_to '戻る', destinations_path %> |
-    <%= link_to 'レビューを書く', new_destination_review_path(@destination) %> |
+    <%= link_to 'レビューを書く', new_destination_review_path(@destination) %>
 
     <hr>
 
@@ -34,3 +42,35 @@
     <% @destination.users.each do |user| %>
       <p><%= user.email %></p>
     <% end %>
+
+  <div class="panel panel-warning">
+      <div class="panel-heading">旅行地情報
+          <%= link_to '編集', edit_destination_path(@destination), class:"btn btn-default btn-sm" %>
+
+      </div>
+
+        <table class="table">
+          <tr>
+            <th>旅行先</th>
+            <td><%= @destination.name %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @destination.address %></td>
+          </tr>
+          <tr>
+            <th>最寄り駅</th>
+            <td><%= @destination.access %></td>
+          </tr>
+          <tr>
+          <td colspan="2">
+              <iframe src="http://maps.google.co.jp/maps?q=<%= @destination.address %>&z=14&output=embed" height="320" width="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+        </td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+<%= link_to '戻る', destinations_path %>
+
+
