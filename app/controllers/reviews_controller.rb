@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(
       destination_id: params[:destination_id],
       user_id: vurrent_user.id,
+      point: review_params["point"],
       body: review_params["body"]
       )
     if @review.save
@@ -21,7 +22,10 @@ class ReviewsController < ApplicationController
 private
 
 def review_params
-  params.require(:review).permit(:body)
+  params.require(:review).permit(
+    :body,
+    :point
+    )
 end
 
 end

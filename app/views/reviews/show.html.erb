@@ -1,1 +1,28 @@
-show.html.erb
+<div class="row">
+  <div class="col-lg-12">
+
+    <%= f.label '旅行地' %><br>
+    <%= f.label '住所' %><br>
+    <%= f.label '最寄り駅' %>
+
+    <%= link_to '編集', edit_destination_path(@destination) %> |
+    <%= link_to '戻る', destinations_path %> |
+    <%= link_to 'レビューを書く', new_destination_review_path(@destination) %> |
+
+    <hr>
+
+    <h2>レビュー一覧</h2>
+    <% @destination.reviews.each do |review| %>
+      <p>
+        <%= review.body %> <br>
+        by <%= review.user.email %>
+      </p>
+    <% end %>
+    <hr>
+    <h2>レビューを残したユーザー一覧</h2>
+    <% @destination.users.each do |user| %>
+      <p><%= user.email %></p>
+    <% end %>
+
+  </div>
+</div>
